@@ -1,0 +1,24 @@
+# encoding=utf8
+'''
+http://exercise.acmcoder.com/online/online_judge_ques?ques_id=1660&konwledgeId=134
+>题目描述						
+	现在有"abcdefghijkl”12个字符，将其所有的排列中按字典序排列，给出任意一种排列，说出这个排列在所有的排列中是第几小的？
+>输入
+	第一行有一个整数n（0＜n＜=10000）;
+	随后有n行，每行是一个排列；
+>输出
+	输出一个整数m，占一行，m表示排列是第几位；
+>样例输入
+	3
+	abcdefghijkl
+	hgebkflacdji
+	gfkedhjblcia
+>样例输出
+	1
+	302715242
+	260726926
+>时间限制
+	C/C++语言：2000MS其它语言：4000MS	
+>内存限制
+	C/C++语言：65536KB其它语言：589824KB
+'''
