@@ -18,3 +18,12 @@ http://exercise.acmcoder.com/online/online_judge_ques?ques_id=1651&konwledgeId=1
 >内存限制
 	C/C++语言：65536KB其它语言：589824KB
 '''
+while True:  
+	li = raw_input()  
+	if not li: break
+	n = int(li)
+	a = sorted(map(int, raw_input().split()))
+	w, l, x = 2, 20, 0
+	for i in xrange(0, len(a)):
+		w -= a[i]
+		l -= a[i]

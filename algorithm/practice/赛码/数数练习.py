@@ -27,3 +27,7 @@ http://exercise.acmcoder.com/online/online_judge_ques?ques_id=1675&konwledgeId=1
 >内存限制
 	C/C++语言：65536KB其它语言：589824KB
 '''
+while True:  
+	n, m, k = map(int, raw_input().split())  
+	if n==0 and m==0 and k==0: break
+	if n==2:
