@@ -36,11 +36,39 @@ class BSTree:
 
 	def delete(self, node):
 		T = self.find(self, node)
+		if not T: return T
+		if T.lchild == None and T.rchild == None:
+			if T.parent.lchild == T: T.parent.lchild = None
+			else: T.parent.rchild = None
+		elif T.lchild == None:
+			T.rchild.parent = T.parent
+			if T.parent.lchild == T: T.parent.lchild = T.rchild
+			else: T.parent.rchild = T.rchild
+		elif T.rchild == None:
+			T.lchild.parent = T.parent
+			if T.parent.lchild == T: T.parent.lchild = T.lchild
+			else: T.parent.rchild = T.lchild
+		else:
+			ln = T.rchild
+			while ln.lchild != None: ln = ln.lchild
+			ln.lchild = T.lchild
+			T.lchild.parent = ln
+			if ln != T.rchild:
+				print('-----------------------------+++++')
+				ln.rchild = T.rchild
+				T.rchild.parent = ln
+				ln.parent.lchild = None
+			ln.parent = T.parent
+			if T.parent != None:
+				if T.parent.lchild == T: T.parent.lchild = ln
+				else: T.parent.rchild = ln
+			else: T = ln
+		return T
 
 	def preTranverse(self, T):
 		if T == None: return
 		self.preTranverse(T.lchild)
-		print(T.node.value, T.parent.node.value if T.parent!=None else '-')
+		print(T.node.value, T.parent.node.value if T.parent!=None else '-', T.lchild.node.value if T.lchild!=None else '-', T.rchild.node.value if T.rchild!=None else '-')
 		self.preTranverse(T.rchild)
 
 if __name__ == "__main__":
@@ -52,3 +80,9 @@ if __name__ == "__main__":
 	T.preTranverse(T)
 	print('----------------------------')
 	print(T.find(T, Node(769)).node.value)
+	print('----------------------------')
+	T = T.delete(Node(854)) #66 985 545 177 854 
+	print('!----------------------------!')
+	print(T.node.value)
+	T.preTranverse(T)
+	
