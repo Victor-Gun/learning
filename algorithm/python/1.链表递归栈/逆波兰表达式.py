@@ -7,7 +7,7 @@
 '''
 import re
 
-_KEY = {
+_KEY_ = {
 	'+' : 'plus_func',
 	'-' : 'minus_func',
 	'*' : 'times_func',
@@ -37,14 +37,14 @@ def rpn(text):
 
 	for i in xrange(0, len(tokens)):
 		#print('----', s) 
-		if _KEY.has_key(tokens[i]) or _KEY.has_key(s[-1]): s.append(tokens[i])
+		if _KEY_.has_key_(tokens[i]) or _KEY_.has_key_(s[-1]): s.append(tokens[i])
 		else:
 			r = tokens[i]
 			while True:
 				n1, n2, op = s.pop(), r, s.pop()
 				#print(s, n1, n2, op) 
-				r = eval(_KEY[op])(n1, n2)
-				if len(s) == 0 or _KEY.has_key(s[-1]): break
+				r = eval(_KEY_[op])(n1, n2)
+				if len(s) == 0 or _KEY_.has_key_(s[-1]): break
 			if len(s) == 0: break
 			s.append(r)
 	return (r, True) if len(s) == 0 and i == len(tokens)-1 else (r, False)

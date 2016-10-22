@@ -54,7 +54,6 @@ class BSTree:
 			ln.lchild = T.lchild
 			T.lchild.parent = ln
 			if ln != T.rchild:
-				print('-----------------------------+++++')
 				ln.rchild = T.rchild
 				T.rchild.parent = ln
 				ln.parent.lchild = None
@@ -82,7 +81,5 @@ if __name__ == "__main__":
 	print(T.find(T, Node(769)).node.value)
 	print('----------------------------')
 	T = T.delete(Node(854)) #66 985 545 177 854 
-	print('!----------------------------!')
-	print(T.node.value)
 	T.preTranverse(T)
 	
