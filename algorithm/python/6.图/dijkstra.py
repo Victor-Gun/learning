@@ -1,16 +1,16 @@
 #--coding:utf8--
-INT_MAX = 1000000
+_NO_EDGE_ = 1000000
 def dijkstra(G, v0):
 	l = len(G[0])
 	dist, cur, s = [G[v0][i] for i in xrange(0, l)], v0, [v0]
 	for it in xrange(0, l):
-		minI, minV = -1, INT_MAX
+		minI, minV = -1, _NO_EDGE_
 		for i in xrange(0, l):
 			if i not in s and G[cur][i] > 0 and G[cur][i] <= minV:
 				minI, minV = i, G[cur][i]
 		dist[minI], cur = dist[minI] if dist[cur] + minV > dist[minI] else dist[cur] + minV, minI
 		for i in xrange(0, l):
-			if i not in s and G[cur][i] != INT_MAX and G[cur][i] > 0 and dist[cur] + G[cur][i] < dist[i]:
+			if i not in s and G[cur][i] != _NO_EDGE_ and G[cur][i] > 0 and dist[cur] + G[cur][i] < dist[i]:
 				dist[i] = dist[cur] + G[cur][i]
 		s.append(cur)
 	return dist
@@ -28,5 +28,5 @@ if __name__ == '__main__':
 	▽							▽
 	C------30---> D <-----20----E
 	'''
-	G = [[0, 10, 20, INT_MAX, 30], [INT_MAX, 0, 5, INT_MAX, 10], [INT_MAX, INT_MAX, 0, 30, INT_MAX], [INT_MAX, INT_MAX, INT_MAX, 0, INT_MAX], [INT_MAX, INT_MAX, INT_MAX, 20, 0]]
+	G = [[0, 10, 20, _NO_EDGE_, 30], [_NO_EDGE_, 0, 5, _NO_EDGE_, 10], [_NO_EDGE_, _NO_EDGE_, 0, 30, _NO_EDGE_], [_NO_EDGE_, _NO_EDGE_, _NO_EDGE_, 0, _NO_EDGE_], [_NO_EDGE_, _NO_EDGE_, _NO_EDGE_, 20, 0]]
 	print(dijkstra(G, 0))
